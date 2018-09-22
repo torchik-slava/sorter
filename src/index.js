@@ -2,6 +2,9 @@ class Sorter {
   constructor() {
     // your implementation
     this.arr = [];
+    this.algoritm = function(a,b){
+      return a-b;
+    }
   }
 
   add(element) {
@@ -21,7 +24,7 @@ class Sorter {
 
   toArray() {
     // your implementation
-    return Array.from(this.arr);
+    return this.arr;
   }
 
   sort(indices) {
@@ -30,9 +33,9 @@ class Sorter {
     for (var i=0; i<indices.length; i++){
       partOfArr[i]=this.arr[indices[i]];
     }
-    partOfArr.sort(function(a,b){return a-b;});
+    partOfArr.sort(this.algoritm);
     // строка 36 для того, чтобы при входящих индексах не по возрастанию, после
-    // сортировки части массивва вставить их на правильные места (по порядку) 
+    // сортировки части массива вставить их на правильные места (по порядку) 
     indices.sort();
     for (var i=0; i<indices.length; i++){
     this.arr[indices[i]]=partOfArr[i]; 
@@ -42,6 +45,7 @@ class Sorter {
 
   setComparator(compareFunction) {
     // your implementation
+    this.algoritm=compareFunction;
   }
 }
 
